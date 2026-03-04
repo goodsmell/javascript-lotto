@@ -1,5 +1,5 @@
 import Input from "./view/Input.js";
-
+import { MONEY_ERROR_MESSAGE, INPUT_MESSAGE } from "./constant/message.js";
 class App {
   #input;
 
@@ -8,21 +8,22 @@ class App {
   }
 
   async run() {
-    const moneyString =
-      await this.#input.readLineAsync("구입금액을 입력해 주세요.");
+    const moneyString = await this.#input.readLineAsync(
+      INPUT_MESSAGE.PURCHASE_AMOUNT,
+    );
 
     const money = Number(moneyString);
 
     if (!money) {
-      throw new Error("[ERROR] 숫자를 입력해주세요.");
+      throw new Error(MONEY_ERROR_MESSAGE.INPUT_NOT_NUMBER);
     }
 
     if (money % 1 !== 0) {
-      throw new Error("[ERROR] 구입 금액은 양의 정수로 입력해주세요.");
+      throw new Error(MONEY_ERROR_MESSAGE.INPUT_NOT_INTEGER);
     }
 
     if (money % 1000 !== 0) {
-      throw new Error("[ERROR] 구입 금액은 1000원 단위로 입력해주세요.");
+      throw new Error(MONEY_ERROR_MESSAGE.INPUT_NOT_THOUSAND_UNIT);
     }
   }
 }
