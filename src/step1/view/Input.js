@@ -1,15 +1,15 @@
 import readline from "readline";
 
 class Input {
-  #rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-
   async readLineAsync(message) {
     return new Promise((resolve, reject) => {
-      this.#rl.question(message ?? "", (line) => {
-        this.#rl.close();
+      const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+      });
+
+      rl.question(message ?? "", (line) => {
+        rl.close();
         resolve(line);
       });
     });
