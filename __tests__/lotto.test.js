@@ -11,4 +11,10 @@ describe("로또 테스트", () => {
       new Lotto(numbers);
     }).toThrow(LOTTO_ERROR_MESSAGE.INPUT_NOT_SIX_NUMBERS);
   });
+
+  test("중복되는 숫자가 없는가?", () => {
+    expect(() => {
+      new Lotto([1, 2, 3, 4, 5, 5]);
+    }).toThrow(LOTTO_ERROR_MESSAGE.INPUT_DUPLICATE);
+  });
 });
