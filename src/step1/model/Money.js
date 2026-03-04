@@ -1,5 +1,5 @@
-import { MONEY_ERROR_MESSAGE } from "../constant/message";
-import { LOTTO } from "../constant";
+import { MONEY_ERROR_MESSAGE } from "../constant/message.js";
+import { LOTTO } from "../constant/index.js";
 
 class Money {
   #amount;
