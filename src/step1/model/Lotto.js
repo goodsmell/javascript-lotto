@@ -1,5 +1,4 @@
 import { LOTTO_ERROR_MESSAGE } from "../constant/message.js";
-import { LOTTO_COUNT } from "../constant/index.js";
 import { LOTTO } from "../constant/index.js";
 class Lotto {
   constructor(numbers) {
