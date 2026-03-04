@@ -19,15 +19,15 @@ class Lotto {
   }
 
   #validateUniq(numbers) {
-    const n = new Set(numbers);
-    if (n.size !== numbers.length) {
+    const numbersSet = new Set(numbers);
+    if (numbersSet.size !== numbers.length) {
       throw new Error(LOTTO_ERROR_MESSAGE.INPUT_DUPLICATE);
     }
   }
 
   #validateRange(numbers) {
     const result = numbers.some(
-      (n) => n < LOTTO.MIN_NUMBER || n > LOTTO.MAX_NUMBER,
+      (number) => number < LOTTO.MIN_NUMBER || number > LOTTO.MAX_NUMBER,
     );
     if (result) {
       throw new Error(LOTTO_ERROR_MESSAGE.INPUT_RANGE);
