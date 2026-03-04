@@ -18,4 +18,13 @@ describe("구매 금액 입력 테스트", () => {
       MONEY_ERROR_MESSAGE.INPUT_NOT_THOUSAND_UNIT,
     );
   });
+  test.each([
+    [5000, 5, "5000"],
+    [10000, 10, "1000"],
+  ])(
+    "구입 금액에 따른 로또 장 수가 올바르게 계산되었는가? (%s)",
+    (amount, count) => {
+      expect(new Money(amount).getLottoCount()).toBe(count);
+    },
+  );
 });
