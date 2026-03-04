@@ -8,9 +8,10 @@ class App {
   }
 
   async run() {
-    const test = await this.#input.readLineAsync("구입금액을 입력해 주세요.\n");
+    const moneyString =
+      await this.#input.readLineAsync("구입금액을 입력해 주세요.");
 
-    const money = Number(test);
+    const money = Number(moneyString);
 
     if (!money) {
       throw new Error("[ERROR] 숫자를 입력해주세요.");
