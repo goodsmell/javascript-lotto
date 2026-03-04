@@ -1,13 +1,13 @@
 class MockInput {
-  #returnValue;
+  #returnValues;
 
-  constructor(returnValue) {
-    this.#returnValue = returnValue;
+  constructor(returnValues) {
+    this.#returnValues = returnValues;
   }
 
   async readLineAsync(message) {
     return new Promise((resolve, reject) => {
-      resolve(this.#returnValue);
+      resolve(this.#returnValues.shift());
     });
   }
 }
