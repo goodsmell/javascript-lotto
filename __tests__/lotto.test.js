@@ -17,4 +17,10 @@ describe("로또 테스트", () => {
       new Lotto([1, 2, 3, 4, 5, 5]);
     }).toThrow(LOTTO_ERROR_MESSAGE.INPUT_DUPLICATE);
   });
+
+  test("1에서 45 사이의 숫자로 구성되어 있는가?", () => {
+    expect(() => {
+      new Lotto([1, 2, 3, 4, 5, 46]);
+    }).toThrow(LOTTO_ERROR_MESSAGE.INPUT_RANGE);
+  });
 });

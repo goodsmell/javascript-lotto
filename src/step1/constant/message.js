@@ -7,6 +7,7 @@ export const MONEY_ERROR_MESSAGE = Object.freeze({
 export const LOTTO_ERROR_MESSAGE = Object.freeze({
   INPUT_NOT_SIX_NUMBER: "[ERROR] 로또 번호는 6개 이어야합니다.\n",
   INPUT_DUPLICATE: "[ERROR] 중복된 번호는 입력할 수 없습니다.\n",
+  INPUT_RANGE: "[ERROR] 로또 번호는 1에서 45 사이의 숫자여야 합니다.\n",
 });
 
 export const INPUT_MESSAGE = Object.freeze({
