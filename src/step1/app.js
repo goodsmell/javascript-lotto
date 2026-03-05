@@ -2,19 +2,17 @@ import Input from "./view/Input.js";
 import Money from "./model/Money.js";
 import LottoStore from "./model/LottoStore.js";
 import WinningLotto from "./model/WinningLotto.js";
-import {
-  MONEY_ERROR_MESSAGE,
-  INPUT_MESSAGE,
-  ERROR_MESSAGE,
-} from "./constant/message.js";
+import { INPUT_MESSAGE, ERROR_MESSAGE } from "./constant/message.js";
 import { parseNumbers, evaluateLotto } from "./utils.js";
 import { getCountsRank, getReturnOnInvestment, printResult } from "./utils.js";
 
 class App {
   #input;
+  #lottoStore;
 
-  constructor({ input } = {}) {
+  constructor({ input, lottoStore } = {}) {
     this.#input = input ?? new Input();
+    this.#lottoStore = lottoStore ?? new LottoStore();
   }
 
   async run() {
@@ -25,12 +23,14 @@ class App {
     const money = new Money(Number(moneyString));
     const lottoCount = money.getLottoCount();
 
-    const lottoStore = new LottoStore();
-    const lottos = lottoStore.issuedLotto(lottoCount);
+    // const lottoStore = new LottoStore();
+    const lottos = this.#lottoStore.issuedLotto(lottoCount);
 
     // 발행한 로또 출력
     console.log(`${money.getLottoCount()}장을 구매했습니다.`);
-    lottos.forEach((lotto) => console.log(lotto.getNumbers()));
+    lottos.forEach((lotto) =>
+      console.log(`[${lotto.getNumbers().join(", ")}]`),
+    );
 
     // 당첨 '번호' 입력받기
     const winningNumbersString = await this.#input.readLineAsync(

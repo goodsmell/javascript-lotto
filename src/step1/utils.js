@@ -12,6 +12,10 @@ export const pickLottoNumbers = () => {
   return [...lottoNumbers.keys()];
 };
 
+export const MockPickLottoNumbers = (returnValues) => {
+  return returnValues.shift();
+};
+
 export const parseNumbers = (raw) => {
   const numbers = raw.split(",").map(Number);
   return numbers;
@@ -66,6 +70,6 @@ export const printResult = (countsObject, getReturnOnInvestment) => {
   console.log(
     `5개 일치, 보너스 볼 일치 (30,000,000원) - ${countsObject[RANK.SECOND]}개`,
   );
-  console.log(`6개 일치 (2,000,000,000원)) - ${countsObject[RANK.FIRST]}개`);
-  console.log(`총 수익률은 ${getReturnOnInvestment.toFixed(1)}% 입니다.`);
+  console.log(`6개 일치 (2,000,000,000원) - ${countsObject[RANK.FIRST]}개`);
+  console.log(`총 수익률은 ${getReturnOnInvestment.toFixed(1)}%입니다.`);
 };
