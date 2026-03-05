@@ -1,8 +1,12 @@
 import { LOTTO_ERROR_MESSAGE } from "../constant/message.js";
 import { LOTTO } from "../constant/index.js";
 class Lotto {
+  #numbers;
+
   constructor(numbers) {
     this.#validate(numbers);
+    numbers.sort((a, b) => a - b);
+    this.#numbers = numbers;
   }
 
   #validate(numbers) {
@@ -31,6 +35,10 @@ class Lotto {
     if (result) {
       throw new Error(LOTTO_ERROR_MESSAGE.INPUT_RANGE);
     }
+  }
+
+  getNumbers() {
+    return this.#numbers;
   }
 }
 
