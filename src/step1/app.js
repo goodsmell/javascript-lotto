@@ -25,6 +25,9 @@ class App {
     lottos.forEach((lotto) => console.log(lotto.getNumbers()));
 
     // 당첨 '번호' 입력받기
+    const winningNumbersString = await this.#input.readLineAsync(
+      INPUT_MESSAGE.WINNING_NUMBER,
+    );
 
     // 당첨 '번호' 검증하고
     // 당첨 '보너스 번호' 입력받기(번호)
