@@ -48,14 +48,10 @@ class App {
 
     // 당첨 결과 계산
 
-    // 로또 1장 당 번호 일치 수 계산
-    const matchCount = lottos.map((lotto) =>
-      evaluateLotto(lotto, winningLotto),
-    );
-
-    // 로또 전체 번호 일치 수 계산
-
+    // 구입한 로또 등수 계산
+    const ranks = lottos.map((lotto) => evaluateLotto(lotto, winningLotto));
     // 수익률 계산
+
     // 당첨 통계 출력
 
     // 다시 시작 여부 묻기

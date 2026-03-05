@@ -32,3 +32,18 @@ export const evaluateLotto = (lotto, winningLotto) => {
   if (matchCount === 4) return RANK.FOURTH;
   if (matchCount === 3) return RANK.FIFTH;
 };
+
+export const getCountsRank = (ranks) => {
+  const counts = Object.values(RANK).reduce((acc, rank) => {
+    acc[rank] = 0;
+    return acc;
+  }, {});
+
+  ranks.forEach((rank) => {
+    if (rank) counts[rank]++;
+  });
+
+  console.log(counts);
+
+  return counts;
+};
