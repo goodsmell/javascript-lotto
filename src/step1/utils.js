@@ -62,6 +62,7 @@ export const getReturnOnInvestment = (amount, countsObject) => {
 };
 
 export const printResult = (countsObject, getReturnOnInvestment) => {
+  console.log("");
   console.log("당첨 통계");
   console.log("--------------------");
   console.log(`3개 일치 (5,000원) - ${countsObject[RANK.FIFTH]}개`);
