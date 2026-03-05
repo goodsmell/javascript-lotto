@@ -5,6 +5,7 @@ import WinningLotto from "./model/WinningLotto.js";
 import { INPUT_MESSAGE, ERROR_MESSAGE } from "./constant/message.js";
 import { parseNumbers, evaluateLotto } from "./utils.js";
 import { getCountsRank, getReturnOnInvestment, printResult } from "./utils.js";
+import Lotto from "./model/Lotto.js";
 
 class App {
   #input;
@@ -16,42 +17,23 @@ class App {
   }
 
   async run() {
-    const moneyString = await this.#input.readLineAsync(
-      INPUT_MESSAGE.PURCHASE_AMOUNT,
-    );
-
-    const money = new Money(Number(moneyString));
-    const lottoCount = money.getLottoCount();
+    const money = await this.#askMoney();
+    const lottoCount = money.getLottoCount(); // money / LOTTO.PRICE
 
     // const lottoStore = new LottoStore();
     const lottos = this.#lottoStore.issuedLotto(lottoCount);
 
-    // 발행한 로또 출력
+    // 발행한 로또 출력a
     console.log(`${money.getLottoCount()}장을 구매했습니다.`);
     lottos.forEach((lotto) =>
       console.log(`[${lotto.getNumbers().join(", ")}]`),
     );
 
     // 당첨 '번호' 입력받기
-    const winningNumbersString = await this.#input.readLineAsync(
-      INPUT_MESSAGE.WINNING_NUMBER,
-    );
-
-    // 당첨 '번호' 파싱
-    const winningNumbers = parseNumbers(winningNumbersString);
+    const winningNumbers = await this.#askWinningNumbers();
 
     // 당첨 '보너스 번호' 입력받기(번호)
-    const bonusNumberString = await this.#input.readLineAsync(
-      INPUT_MESSAGE.BONUS_NUMBER,
-    );
-
-    // 당첨 '보너스 번호' 파싱
-    const bonusNumber = Number(bonusNumberString);
-
-    // 당첨 '보너스 번호', '번호' 검증하고
-    const winningLotto = new WinningLotto(winningNumbers, bonusNumber);
-
-    // 당첨 결과 계산
+    const winningLotto = await this.#askBonusNumber(winningNumbers);
 
     // 구입한 로또 등수 계산   { RANK_1: 2, RANK_2: 1, RANK_3: 1, RANK_4: 0, RANK_5: 1 }
     const ranks = lottos.map((lotto) => evaluateLotto(lotto, winningLotto));
@@ -68,6 +50,42 @@ class App {
 
     return;
   }
+
+  async #askBonusNumber(lotto) {
+    return await this.#retry(async () => {
+      const inputBonus = await this.#input.readLineAsync(
+        INPUT_MESSAGE.BONUS_NUMBER,
+      );
+      const bonusNumber = Number(inputBonus);
+
+      const winningLotto = new WinningLotto(lotto, bonusNumber);
+
+      return winningLotto;
+    });
+  }
+
+  async #askWinningNumbers() {
+    return await this.#retry(async () => {
+      const inputWinningNumber = await this.#input.readLineAsync(
+        INPUT_MESSAGE.WINNING_NUMBER,
+      );
+      const winningNumbers = parseNumbers(inputWinningNumber);
+      return new Lotto(winningNumbers);
+    });
+  }
+
+  async #askMoney() {
+    return await this.#retry(async () => {
+      const inputMoney = await this.#input.readLineAsync(
+        INPUT_MESSAGE.PURCHASE_AMOUNT,
+      );
+
+      const money = new Money(Number(inputMoney));
+
+      return money;
+    });
+  }
+
   async #askRetry() {
     await this.#retry(async () => {
       const askRetry = await this.#input.readLineAsync(INPUT_MESSAGE.ASK_RETRY);

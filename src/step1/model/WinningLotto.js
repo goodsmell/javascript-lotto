@@ -2,17 +2,23 @@ import Lotto from "./Lotto.js";
 import { LOTTO } from "../constant/index.js";
 import { LOTTO_ERROR_MESSAGE } from "../constant/message.js";
 
-class WinningLotto extends Lotto {
+class WinningLotto {
+  #lotto;
   #bonus;
 
   constructor(numbers, bonus) {
-    super(numbers);
+    // super(numbers);
+    this.#lotto = numbers;
     this.#validate(numbers, bonus);
     this.#bonus = bonus;
   }
 
+  getNumbers() {
+    return this.#lotto.getNumbers();
+  }
+
   #validate(numbers, bonus) {
-    this.#validateUniq(numbers, bonus);
+    this.#validateUniq(numbers.getNumbers(), bonus);
     this.#validateRange(bonus);
   }
 
