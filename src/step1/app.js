@@ -3,7 +3,8 @@ import Money from "./model/Money.js";
 import LottoStore from "./model/LottoStore.js";
 import WinningLotto from "./model/WinningLotto.js";
 import { MONEY_ERROR_MESSAGE, INPUT_MESSAGE } from "./constant/message.js";
-import { parseNumbers } from "./utils.js";
+import { parseNumbers, evaluateLotto } from "./utils.js";
+
 class App {
   #input;
 
@@ -46,8 +47,14 @@ class App {
     const winningLotto = new WinningLotto(winningNumbers, bonusNumber);
 
     // 당첨 결과 계산
+
     // 로또 1장 당 번호 일치 수 계산
+    const matchCount = lottos.map((lotto) =>
+      evaluateLotto(lotto, winningLotto),
+    );
+
     // 로또 전체 번호 일치 수 계산
+
     // 수익률 계산
     // 당첨 통계 출력
 
