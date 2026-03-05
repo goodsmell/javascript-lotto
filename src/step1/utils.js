@@ -1,4 +1,4 @@
-import { LOTTO } from "./constant/index.js";
+import { LOTTO, RANK } from "./constant/index.js";
 
 export const pickLottoNumbers = () => {
   const lottoNumbers = new Set();
@@ -26,9 +26,9 @@ export const evaluateLotto = (lotto, winningLotto) => {
   const matchCount = lotto.getNumbers().length * 2 - numbersSet.size;
   const hasBonus = lotto.getNumbers().includes(winningLotto.getBonus());
 
-  if (matchCount === 6) return 1;
-  if (matchCount === 5 && hasBonus) return 2;
-  if (matchCount === 5 && !hasBonus) return 3;
-  if (matchCount === 4) return 4;
-  if (matchCount === 3) return 5;
+  if (matchCount === 6) return RANK.FIRST;
+  if (matchCount === 5 && hasBonus) return RANK.SECOND;
+  if (matchCount === 5 && !hasBonus) return RANK.THIRD;
+  if (matchCount === 4) return RANK.FOURTH;
+  if (matchCount === 3) return RANK.FIFTH;
 };
