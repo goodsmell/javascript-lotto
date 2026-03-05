@@ -2,7 +2,11 @@ import Input from "./view/Input.js";
 import Money from "./model/Money.js";
 import LottoStore from "./model/LottoStore.js";
 import WinningLotto from "./model/WinningLotto.js";
-import { MONEY_ERROR_MESSAGE, INPUT_MESSAGE } from "./constant/message.js";
+import {
+  MONEY_ERROR_MESSAGE,
+  INPUT_MESSAGE,
+  ERROR_MESSAGE,
+} from "./constant/message.js";
 import { parseNumbers, evaluateLotto } from "./utils.js";
 import { getCountsRank, getReturnOnInvestment, printResult } from "./utils.js";
 
@@ -58,8 +62,30 @@ class App {
 
     // 당첨 통계 출력
     printResult(counts, returnOnInvestment);
+
     // 다시 시작 여부 묻기
-    
+    await this.#askRetry();
+
+    return;
+  }
+  async #askRetry() {
+    await this.#retry(async () => {
+      const askRetry = await this.#input.readLineAsync(INPUT_MESSAGE.ASK_RETRY);
+      if (askRetry === "y" || askRetry === "Y") await this.run();
+      if (askRetry === "n" || askRetry === "N") return;
+
+      throw new Error(ERROR_MESSAGE.NOT_INPUT_RETRY);
+    });
+  }
+
+  async #retry(task) {
+    while (true) {
+      try {
+        return await task();
+      } catch (e) {
+        console.log(e.message);
+      }
+    }
   }
 }
 
