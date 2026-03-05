@@ -11,3 +11,8 @@ export const pickLottoNumbers = () => {
 
   return [...lottoNumbers.keys()];
 };
+
+export const parseNumbers = (raw) => {
+  const numbers = raw.split(",").map(Number);
+  return numbers;
+};

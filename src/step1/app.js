@@ -1,7 +1,9 @@
 import Input from "./view/Input.js";
 import Money from "./model/Money.js";
 import LottoStore from "./model/LottoStore.js";
+import WinningLotto from "./model/WinningLotto.js";
 import { MONEY_ERROR_MESSAGE, INPUT_MESSAGE } from "./constant/message.js";
+import { parseNumbers } from "./utils.js";
 class App {
   #input;
 
@@ -29,9 +31,19 @@ class App {
       INPUT_MESSAGE.WINNING_NUMBER,
     );
 
-    // 당첨 '번호' 검증하고
+    // 당첨 '번호' 파싱
+    const winningNumbers = parseNumbers(winningNumbersString);
+
     // 당첨 '보너스 번호' 입력받기(번호)
-    // 당첨 '보너스 번호' 검증
+    const bonusNumberString = await this.#input.readLineAsync(
+      INPUT_MESSAGE.BONUS_NUMBER,
+    );
+
+    // 당첨 '보너스 번호' 파싱
+    const bonusNumber = Number(bonusNumberString);
+
+    // 당첨 '보너스 번호', '번호' 검증하고
+    const winningLotto = new WinningLotto(winningNumbers, bonusNumber);
 
     // 당첨 결과 계산
     // 로또 1장 당 번호 일치 수 계산
