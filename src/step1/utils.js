@@ -1,4 +1,4 @@
-import { LOTTO, RANK } from "./constant/index.js";
+import { LOTTO, RANK, RANK_PRIZE } from "./constant/index.js";
 
 export const pickLottoNumbers = () => {
   const lottoNumbers = new Set();
@@ -43,7 +43,16 @@ export const getCountsRank = (ranks) => {
     if (rank) counts[rank]++;
   });
 
-  console.log(counts);
-
   return counts;
+};
+
+export const getPrize = (countsObject) => {
+  return Object.entries(countsObject).reduce(
+    (acc, [rank, count]) => acc + RANK_PRIZE[rank] * count,
+    0,
+  );
+};
+
+export const getReturnOnInvestment = (amount, countsObject) => {
+  return (getPrize(countsObject) / amount) * 100;
 };

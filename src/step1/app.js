@@ -4,6 +4,7 @@ import LottoStore from "./model/LottoStore.js";
 import WinningLotto from "./model/WinningLotto.js";
 import { MONEY_ERROR_MESSAGE, INPUT_MESSAGE } from "./constant/message.js";
 import { parseNumbers, evaluateLotto } from "./utils.js";
+import { getCountsRank, getReturnOnInvestment } from "./utils.js";
 
 class App {
   #input;
@@ -48,9 +49,12 @@ class App {
 
     // 당첨 결과 계산
 
-    // 구입한 로또 등수 계산
+    // 구입한 로또 등수 계산   { RANK_1: 2, RANK_2: 1, RANK_3: 1, RANK_4: 0, RANK_5: 1 }
     const ranks = lottos.map((lotto) => evaluateLotto(lotto, winningLotto));
+
     // 수익률 계산
+    const counts = getCountsRank(ranks);
+    const returnOnInvestment = getReturnOnInvestment(money.getMoney(), counts);
 
     // 당첨 통계 출력
 
