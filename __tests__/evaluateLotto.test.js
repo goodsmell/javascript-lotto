@@ -21,7 +21,7 @@ describe("당첨 결과 계산", () => {
     (_, lottoNumbers, winningLottoNumbers, bonusNumber, rank) => {
       const result = evaluateLotto(
         new Lotto(lottoNumbers),
-        new WinningLotto(winningLottoNumbers, bonusNumber),
+        new WinningLotto(new Lotto(winningLottoNumbers), bonusNumber),
       );
       expect(result).toBe(rank);
     },
