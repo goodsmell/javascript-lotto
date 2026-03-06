@@ -1,5 +1,6 @@
 import Lotto from "./Lotto.js";
-import { LOTTO } from "../constant/index.js";
+import LottoResult from "./LottoResult.js";
+import { LOTTO, RANK } from "../constant/index.js";
 import { LOTTO_ERROR_MESSAGE } from "../constant/message.js";
 
 class WinningLotto {
@@ -7,7 +8,6 @@ class WinningLotto {
   #bonus;
 
   constructor(numbers, bonus) {
-    // super(numbers);
     this.#lotto = numbers;
     this.#validate(numbers, bonus);
     this.#bonus = bonus;
@@ -37,6 +37,37 @@ class WinningLotto {
 
   getBonus() {
     return this.#bonus;
+  }
+
+  evaluateLotto(lotto) {
+    const numbersSet = new Set([
+      ...lotto.getNumbers(),
+      ...this.#lotto.getNumbers(),
+    ]);
+
+    const matchCount = lotto.getNumbers().length * 2 - numbersSet.size;
+    const hasBonus = lotto.getNumbers().includes(this.#bonus);
+
+    if (matchCount === 6) return RANK.FIRST;
+    if (matchCount === 5 && hasBonus) return RANK.SECOND;
+    if (matchCount === 5 && !hasBonus) return RANK.THIRD;
+    if (matchCount === 4) return RANK.FOURTH;
+    if (matchCount === 3) return RANK.FIFTH;
+  }
+
+  evaluateLottos(lottos) {
+    const ranks = lottos.map((lotto) => this.evaluateLotto(lotto));
+
+    const counts = Object.values(RANK).reduce((acc, rank) => {
+      acc[rank] = 0;
+      return acc;
+    }, {});
+
+    ranks.forEach((rank) => {
+      if (rank) counts[rank]++;
+    });
+
+    return new LottoResult(counts);
   }
 }
 

@@ -21,46 +21,32 @@ export const parseNumbers = (raw) => {
   return numbers;
 };
 
-export const evaluateLotto = (lotto, winningLotto) => {
-  const numbersSet = new Set([
-    ...lotto.getNumbers(),
-    ...winningLotto.getNumbers(),
-  ]);
+// 계산 클래스  ---
+// export const getCountsRank = (ranks) => {
+//   const counts = Object.values(RANK).reduce((acc, rank) => {
+//     acc[rank] = 0;
+//     return acc;
+//   }, {});
 
-  const matchCount = lotto.getNumbers().length * 2 - numbersSet.size;
-  const hasBonus = lotto.getNumbers().includes(winningLotto.getBonus());
+//   ranks.forEach((rank) => {
+//     if (rank) counts[rank]++;
+//   });
 
-  if (matchCount === 6) return RANK.FIRST;
-  if (matchCount === 5 && hasBonus) return RANK.SECOND;
-  if (matchCount === 5 && !hasBonus) return RANK.THIRD;
-  if (matchCount === 4) return RANK.FOURTH;
-  if (matchCount === 3) return RANK.FIFTH;
-};
+//   return counts;
+// };
 
-export const getCountsRank = (ranks) => {
-  const counts = Object.values(RANK).reduce((acc, rank) => {
-    acc[rank] = 0;
-    return acc;
-  }, {});
-
-  ranks.forEach((rank) => {
-    if (rank) counts[rank]++;
-  });
-
-  return counts;
-};
-
-export const getPrize = (countsObject) => {
-  return Object.entries(countsObject).reduce(
-    (acc, [rank, count]) => acc + RANK_PRIZE[rank] * count,
-    0,
-  );
-};
+// export const getPrize = (countsObject) => {
+//   return Object.entries(countsObject).reduce(
+//     (acc, [rank, count]) => acc + RANK_PRIZE[rank] * count,
+//     0,
+//   );
+// };
 
 export const getReturnOnInvestment = (amount, countsObject) => {
   return (getPrize(countsObject) / amount) * 100;
 };
 
+// 아웃풋 ---
 export const printResult = (countsObject, getReturnOnInvestment) => {
   console.log("");
   console.log("당첨 통계");
