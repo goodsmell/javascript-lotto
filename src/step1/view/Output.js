@@ -1,7 +1,7 @@
 import { RANK } from "../constant/index.js";
 
 class Output {
-  printResult = (countsObject, returnOnInvestment) => {
+  static printResult = (countsObject, returnOnInvestment) => {
     console.log("");
     console.log("당첨 통계");
     console.log("--------------------");
@@ -13,6 +13,13 @@ class Output {
     );
     console.log(`6개 일치 (2,000,000,000원) - ${countsObject[RANK.FIRST]}개`);
     console.log(`총 수익률은 ${returnOnInvestment.toFixed(1)}%입니다.`);
+  };
+
+  static printPurchasedLottos = (lottos) => {
+    console.log(`${lottos.length}장을 구매했습니다.`);
+    lottos.forEach((lotto) =>
+      console.log(`[${lotto.getNumbers().join(", ")}]`),
+    );
   };
 }
 
