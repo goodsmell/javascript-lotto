@@ -10,7 +10,7 @@ class LottoStore {
       randomLottoNumberGenerator ?? (() => pickLottoNumbers());
   }
 
-  issuedLotto(amount) {
+  issuedLottos(amount) {
     const count = amount / LOTTO.PRICE;
     const lottos = [];
 

@@ -18,7 +18,7 @@ class App {
 
   async run() {
     const money = await this.#askMoney();
-    const lottos = this.#lottoStore.issuedLotto(money.getMoney());
+    const lottos = this.#lottoStore.issuedLottos(money.getMoney());
     Output.printPurchasedLottos(lottos);
 
     const winningNumbers = await this.#askWinningNumbers();
