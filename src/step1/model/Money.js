@@ -36,10 +36,6 @@ class Money {
   getMoney() {
     return this.#amount;
   }
-
-  getLottoCount() {
-    return this.#amount / LOTTO.PRICE;
-  }
 }
 
 export default Money;

@@ -1,5 +1,6 @@
 import Lotto from "./Lotto.js";
 import { pickLottoNumbers } from "../utils.js";
+import { LOTTO } from "../constant/index.js";
 
 class LottoStore {
   #pickLottoNumbers;
@@ -9,7 +10,8 @@ class LottoStore {
       randomLottoNumberGenerator ?? (() => pickLottoNumbers());
   }
 
-  issuedLotto(count) {
+  issuedLotto(amount) {
+    const count = amount / LOTTO.PRICE;
     const lottos = [];
 
     for (let i = 0; i < count; i++) {
