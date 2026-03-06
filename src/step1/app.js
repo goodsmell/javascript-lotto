@@ -4,8 +4,8 @@ import LottoStore from "./model/LottoStore.js";
 import WinningLotto from "./model/WinningLotto.js";
 import { INPUT_MESSAGE, ERROR_MESSAGE } from "./constant/message.js";
 import { parseNumbers } from "./utils.js";
-import { getReturnOnInvestment, printResult } from "./utils.js";
 import Lotto from "./model/Lotto.js";
+import Output from "./view/Output.js";
 
 class App {
   #input;
@@ -41,7 +41,9 @@ class App {
     const returnOnInvestment = result.getReturnOnInvestment(money.getMoney());
 
     // 당첨 통계 출력
-    printResult(result.getCounts(), returnOnInvestment);
+
+    const output = new Output();
+    output.printResult(result.getCounts(), returnOnInvestment);
 
     // 다시 시작 여부 묻기
     await this.#askRetry();
