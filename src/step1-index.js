@@ -1,4 +1,4 @@
 import App from "./step1/app.js";
 
 const app = new App();
-app.run();
+await app.run();
