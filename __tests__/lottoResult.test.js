@@ -1,7 +1,5 @@
 import { RANK } from "../src/step1/constant/index.js";
-import { getReturnOnInvestment } from "../src/step1/utils.js";
 import LottoResult from "../src/step1/model/LottoResult.js";
-import WinningLotto from "../src/step1/model/WinningLotto.js";
 
 describe("수익률 계산 테스트", () => {
   test("수익률을 정상적으로 계산하고있는가?", () => {

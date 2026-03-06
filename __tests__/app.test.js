@@ -1,12 +1,13 @@
 import App from "../src/step1/app.js";
 import MockInput from "../src/step1/view/MockInput.js";
-import Lotto from "../src/step1/model/Lotto.js";
 import LottoStore from "../src/step1/model/LottoStore.js";
+
 import {
-  LOTTO_ERROR_MESSAGE,
   ERROR_MESSAGE,
 } from "../src/step1/constant/message.js";
-import { MockPickLottoNumbers } from "../src/step1/utils.js";
+import {
+  MockPickLottoNumbers,
+} from "../src/step1/utils.js";
 
 describe("App 테스트 ", () => {
   test("정상적으로 App이 종료되는가?", async () => {
