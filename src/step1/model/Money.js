@@ -5,19 +5,25 @@ class Money {
   #amount;
 
   constructor(amount) {
-    this.#amount = amount;
     this.#validate(amount);
+    this.#amount = amount;
   }
 
   #validate(amount) {
     this.#validateNumber(amount);
     this.#validateInteger(amount);
+    this.#validatePositive(amount);
     this.#validateThousandUnit(amount);
   }
 
   #validateNumber(amount) {
     if (Number.isNaN(amount)) {
       throw new Error(MONEY_ERROR_MESSAGE.INPUT_NOT_NUMBER);
+    }
+  }
+  #validatePositive(amount) {
+    if (amount <= 0) {
+      throw new Error(MONEY_ERROR_MESSAGE.INPUT_NEGATIVE);
     }
   }
 

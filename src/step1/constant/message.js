@@ -1,7 +1,8 @@
 export const MONEY_ERROR_MESSAGE = Object.freeze({
-  INPUT_NOT_NUMBER: "[ERROR] 구입 금액은 숫자만 입력할 수 있습니다.\n",
-  INPUT_NOT_INTEGER: "[ERROR] 구입 금액은 양의 정수만 입력할 수 있습니다.\n",
-  INPUT_NOT_THOUSAND_UNIT: "[ERROR] 금액은 1000원 단위로 입력해야 합니다.\n",
+  INPUT_NOT_NUMBER: "[ERROR] 구입 금액은 숫자만 입력 가능합니다..\n",
+  INPUT_NOT_INTEGER: "[ERROR] 구입 금액은 정수만 입력 가능합니다.\n",
+  INPUT_NOT_THOUSAND_UNIT: "[ERROR] 금액은 1000원 단위로 입력 가능합니다.\n",
+  INPUT_NEGATIVE: "[ERROR] 금액은 양수만 입력 가능합니다.",
 });
 
 export const LOTTO_ERROR_MESSAGE = Object.freeze({
