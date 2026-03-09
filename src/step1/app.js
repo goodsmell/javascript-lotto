@@ -17,6 +17,17 @@ class App {
   }
 
   async run() {
+    while (true) {
+      await this.#playGame();
+      const isRetry = await this.#askRetry();
+
+      if (!isRetry) {
+        break;
+      }
+    }
+  }
+
+  async #playGame() {
     const money = await this.#askMoney();
     const lottos = this.#lottoStore.issuedLottos(money.getMoney());
     Output.printPurchasedLottos(lottos);
@@ -29,10 +40,7 @@ class App {
       money.getMoney(),
     );
     Output.printResult(lottoGameResult.getCounts(), returnOnInvestment);
-
-    await this.#askRetry();
   }
-
   async #askBonusNumber(lotto) {
     return await this.#retry(async () => {
       const inputBonus = await this.#input.readLineAsync(
@@ -69,10 +77,12 @@ class App {
   }
 
   async #askRetry() {
-    await this.#retry(async () => {
+    return await this.#retry(async () => {
       const askRetry = await this.#input.readLineAsync(INPUT_MESSAGE.ASK_RETRY);
-      if (askRetry === "y" || askRetry === "Y") return await this.run();
-      if (askRetry === "n" || askRetry === "N") return;
+      const input = askRetry.toLowerCase();
+
+      if (input === "y") return true;
+      if (input === "n") return false;
 
       throw new Error(ERROR_MESSAGE.NOT_INPUT_RETRY);
     });
