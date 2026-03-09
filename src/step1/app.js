@@ -31,7 +31,6 @@ class App {
     Output.printResult(lottoGameResult.getCounts(), returnOnInvestment);
 
     await this.#askRetry();
-    return;
   }
 
   async #askBonusNumber(lotto) {
