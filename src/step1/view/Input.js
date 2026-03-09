@@ -1,7 +1,7 @@
 import readline from "readline";
 
 class Input {
-  static async readLineAsync(message) {
+  async readLineAsync(message) {
     return new Promise((resolve, reject) => {
       const rl = readline.createInterface({
         input: process.stdin,
