@@ -6,14 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./src/styles/theme.css" />
-    <link rel="stylesheet" href="./src/styles/common.css" />
     <link rel="stylesheet" href="./src/styles/text.css" />
+    <link rel="stylesheet" href="./src/styles/common.css" />
   </head>
 
   <body>
     <div id="app">
-      <h1>🎱 행운의 로또</h1>
+      <header id="header" class="header">
+        <h1 class="lotto-title">🎱 행운의 로또</h1>
+      </header>
+
+      <main id="lotto" class="app-container">
+        <section class="lotto-container"></section>
+      </main>
+      <footer id="footer" class="footer">
+        <p class="lotto-caption">Copyright 2023. woowacourse</p>
+      </footer>
     </div>
+
     <script type="module" src="./src/step2-index.js"></script>
   </body>
 </html>
