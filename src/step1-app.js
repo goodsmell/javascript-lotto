@@ -1,11 +1,11 @@
-import Input from "./view/Input.js";
+import Input from "./view/console/Input.js";
 import Money from "./model/Money.js";
 import LottoStore from "./model/LottoStore.js";
 import WinningLotto from "./model/WinningLotto.js";
 import { INPUT_MESSAGE, ERROR_MESSAGE } from "./constant/message.js";
 import { parseNumbers } from "./utils.js";
 import Lotto from "./model/Lotto.js";
-import Output from "./view/Output.js";
+import Output from "./view/console/Output.js";
 
 class App {
   #input;

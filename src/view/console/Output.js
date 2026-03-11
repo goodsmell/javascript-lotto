@@ -1,4 +1,4 @@
-import { RANK } from "../constant/index.js";
+import { RANK } from "../../constant/index.js";
 
 class Output {
   static printResult = (countsObject, returnOnInvestment) => {
