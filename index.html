@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./src/styles/theme.css" />
     <link rel="stylesheet" href="./src/styles/text.css" />
     <link rel="stylesheet" href="./src/styles/common.css" />
+    <link rel="stylesheet" href="./src/styles/modal.css" />
   </head>
 
   <body>
@@ -58,9 +59,33 @@
           </section>
         </section>
       </main>
+
       <footer id="footer" class="footer">
         <p class="lotto-caption">Copyright 2023. woowacourse</p>
       </footer>
+    </div>
+    <div id="result-modal" class="result-modal hidden">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <button id="modal-close-button">X</button>
+        <h1>🏆 당첨 통계 🏆</h1>
+
+        <table class="result-table">
+          <thead>
+            <tr>
+              <th>일치 갯수</th>
+              <th>당첨금</th>
+              <th>당첨 횟수</th>
+            </tr>
+          </thead>
+          <tbody id="result-table-body"></tbody>
+        </table>
+        <p id="total-profit-rate" class="lotto-body">
+          당신의 총 수익률은 0%입니다.
+        </p>
+
+        <button id="reset-button" class="lotto-button">다시 시작하기</button>
+      </div>
     </div>
 
     <script type="module" src="./src/step2-index.js"></script>
