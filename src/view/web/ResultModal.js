@@ -20,7 +20,6 @@ class ResultModal {
   }
 
   renderResult(rankCounts, profitRate) {
-    console.log(rankCounts[0]);
     this.$resultTableBody.innerHTML = this._createResultTemplate(rankCounts);
     this.$profitRate.innerText = `당신의 총 수익률은 ${profitRate}%입니다.`;
     this.$modal.classList.remove("hidden");
