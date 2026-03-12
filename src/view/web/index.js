@@ -27,7 +27,11 @@ class LottoView {
     });
   }
 
-
+  bindCloseModal() {
+    this.$modalCloseButton.addEventListener("click", () => {
+      this.$modal.classList.add("hidden");
+    });
+  }
 
   // 💡 당첨 번호 제출 이벤트를 감시하는 함수
   bindCalculate(handler) {

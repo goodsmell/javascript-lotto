@@ -11,6 +11,7 @@ class App {
   init() {
     this.view.bindPurchase((money) => this.handlePurchase(money));
     this.view.bindCalculate((data) => this.handleCalculateResults(data));
+    this.view.bindCloseModal();
   }
 
   // 구매 처리 함수
