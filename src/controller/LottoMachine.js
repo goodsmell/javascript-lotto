@@ -10,18 +10,20 @@ class LottoMachine {
     this.#money = new Money(money);
   }
 
-  issuedLotto(money) {
+  issueLottos(money) {
     this.#setMoney(money);
     this.#lottos = new LottoStore().issuedLottos(this.#money.getMoney());
     return [...this.#lottos];
   }
 
-  calculateResult(winningNumbers, BonusNumbers) {
-    const bonusNumber = Number(BonusNumbers);
+  calculateResult(winningNumbers, bonusNumber) {
+    if (this.#lottos.length === 0) return null;
+
+    const numericBonusNumber = Number(bonusNumber);
 
     const winningLotto = new WinningLotto(
       new Lotto(winningNumbers),
-      bonusNumber,
+      numericBonusNumber,
     );
     const lottoResult = winningLotto.evaluateLottos(this.#lottos);
     return {
