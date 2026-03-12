@@ -2,6 +2,7 @@ import Money from "../model/Money.js";
 import LottoStore from "../model/LottoStore.js";
 import WinningLotto from "../model/WinningLotto.js";
 import Lotto from "../model/Lotto.js";
+
 class LottoMachine {
   #lottos = [];
   #money;

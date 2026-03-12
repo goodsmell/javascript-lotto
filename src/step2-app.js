@@ -2,7 +2,7 @@ import LottoList from "./view/web/LottoList.js";
 import MoneyInput from "./view/web/MoneyInput.js";
 import ResultModal from "./view/web/ResultModal.js";
 import WinningInput from "./view/web/WinningInput.js";
-import LottoMachine from "./controller/LottoMachine.js";
+import LottoMachine from "./service/LottoMachine.js";
 
 class App {
   constructor() {
@@ -10,7 +10,7 @@ class App {
     this.ResultModalView = new ResultModal();
     this.LottoListView = new LottoList();
     this.WinningInputView = new WinningInput();
-    this.machine = new LottoMachine();
+    this.LottoService = new LottoMachine();
   }
 
   init() {
@@ -24,7 +24,7 @@ class App {
 
   handlePurchase(money) {
     try {
-      const lottos = this.machine.issueLottos(money);
+      const lottos = this.LottoService.issueLottos(money);
       this.LottoListView.renderLottoList(lottos);
       this.WinningInputView.showWinningInput();
     } catch (error) {
@@ -35,7 +35,7 @@ class App {
   handleCalculateResults({ winningNumbers, bonusNumber }) {
     try {
       const { countMatchRank, returnOnInvestment } =
-        this.machine.calculateResult(winningNumbers, bonusNumber);
+        this.LottoService.calculateResult(winningNumbers, bonusNumber);
 
       console.log(countMatchRank, returnOnInvestment);
       this.ResultModalView.renderResult(countMatchRank, returnOnInvestment);
@@ -45,7 +45,7 @@ class App {
   }
 
   handleReset() {
-    this.machine = new LottoMachine();
+    this.LottoService = new LottoMachine();
     this.MoneyView.reset();
     this.ResultModalView.reset();
     this.LottoListView.reset();
