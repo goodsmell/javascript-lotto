@@ -8,22 +8,27 @@ class LottoMachine {
   constructor() {}
 
   setMoney(money) {
-    this.#money = new Money(money);
+    this.#money = new Money(money).getMoney();
   }
 
   issuedLotto(money) {
     this.setMoney(money);
-    this.#lotto = new LottoStore().issuedLottos(this.#money.getMoney());
+    this.#lotto = new LottoStore().issuedLottos(this.#money);
     return [...this.#lotto];
   }
 
   calculateResult(winningNumbers, BonusNumbers) {
     const bonusNumber = Number(BonusNumbers);
-    const winningLotto = new Lotto(winningNumbers);
 
-    const resultLotto = new WinningLotto(winningLotto, bonusNumber);
-
-    return resultLotto.evaluateLottos(this.#lotto);
+    const winningLotto = new WinningLotto(
+      new Lotto(winningNumbers),
+      bonusNumber,
+    );
+    const lottoResult = winningLotto.evaluateLottos(this.#lotto);
+    return {
+      countMatchRank: lottoResult.getCounts(),
+      returnOnInvestment: lottoResult.getReturnOnInvestment(this.#money),
+    };
   }
 
   async #playGame() {

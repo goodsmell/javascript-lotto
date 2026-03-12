@@ -11,6 +11,12 @@ class LottoView {
     );
     this.$winningSection = document.querySelector("#winning-bonus-container");
     this.$bonusNumberInput = document.querySelector("#bonus-number-input");
+
+    this.$modal = document.querySelector("#result-modal");
+    this.$modalCloseButton = document.querySelector("#modal-close-button");
+    this.$resultTableBody = document.querySelector("#result-table-body");
+    this.$profitRate = document.querySelector("#total-profit-rate");
+    this.$resetButton = document.querySelector("#reset-button");
   }
 
   bindPurchase(handler) {
@@ -21,6 +27,8 @@ class LottoView {
     });
   }
 
+
+
   // 💡 당첨 번호 제출 이벤트를 감시하는 함수
   bindCalculate(handler) {
     this.$winningNumbersForm.addEventListener("submit", (e) => {
@@ -30,7 +38,7 @@ class LottoView {
         (input) => Number(input.value),
       );
       const bonusNumber = Number(this.$bonusNumberInput.value);
-      
+
       handler({ winningNumbers, bonusNumber });
     });
   }
@@ -44,12 +52,30 @@ class LottoView {
     `;
   }
 
+  renderResult(rankCounts, profitRate) {
+    console.log(rankCounts, profitRate);
+    this.$resultTableBody.innerHTML = this._createResultTemplate(rankCounts);
+    this.$profitRate.innerText = `당신의 총 수익률은 ${profitRate}%입니다.`;
+    this.$modal.classList.remove("hidden");
+  }
+
   _lottoTemplate(lotto) {
     return `
       <div class="lotto-item"> <span class="lotto-icon">🎟️</span>
         <p class="lotto-body">${lotto.getNumbers().join(", ")}</p>
       </div>
     `;
+  }
+
+  _createResultTemplate(rankCounts) {
+    return `
+    <tr><td>3개</td><td>5,000</td><td>${rankCounts[4] || 0}개</td></tr>
+    <tr><td>4개</td><td>50,000</td><td>${rankCounts[3] || 0}개</td></tr>
+    <tr><td>5개</td><td>1,500,000</td><td>${rankCounts[2] || 0}개</td></tr>
+    <tr><td>5개 + 보너스 볼</td><td>30,000,000</td><td>${rankCounts[1] || 0}개</td></tr>
+    <tr><td>6개</td><td>2,000,000,000</td><td>${rankCounts[0] || 0}개</td></tr>
+
+  `;
   }
 
   showWinningInput() {

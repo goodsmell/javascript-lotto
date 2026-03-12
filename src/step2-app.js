@@ -28,8 +28,9 @@ class App {
   // 결과 계산 함수
   handleCalculateResults({ winningNumbers, bonusNumber }) {
     try {
-      const result = this.machine.calculateResult(winningNumbers, bonusNumber);
-      console.log("계산 결과:", result);
+      const { countMatchRank, returnOnInvestment } =
+        this.machine.calculateResult(winningNumbers, bonusNumber);
+      this.view.renderResult(countMatchRank, returnOnInvestment);
     } catch (error) {
       alert(error.message);
     }
