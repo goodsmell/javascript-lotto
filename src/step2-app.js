@@ -1,27 +1,34 @@
-import LottoView from "./view/web/index.js";
+import LottoList from "./view/web/LottoList.js";
+import MoneyInput from "./view/web/MoneyInput.js";
+import ResultModal from "./view/web/ResultModal.js";
+import WinningInput from "./view/web/WinningInput.js";
 import LottoMachine from "./controller/LottoMachine.js";
 
 class App {
   constructor() {
-    this.view = new LottoView();
+    this.MoneyView = new MoneyInput();
+    this.ResultModalView = new ResultModal();
+    this.LottoListView = new LottoList();
+    this.WinningInputView = new WinningInput();
     this.machine = new LottoMachine();
   }
 
   // 초기화
   init() {
-    this.view.bindPurchase((money) => this.handlePurchase(money));
-    this.view.bindCalculate((data) => this.handleCalculateResults(data));
-    this.view.bindCloseModal();
-    this.view.bindReset(() => this.handleReset());
+    this.MoneyView.bindPurchase((money) => this.handlePurchase(money));
+    this.WinningInputView.bindCalculate((data) =>
+      this.handleCalculateResults(data),
+    );
+    this.ResultModalView.bindCloseModal();
+    this.ResultModalView.bindReset(() => this.handleReset());
   }
 
   // 구매 처리 함수
   handlePurchase(money) {
     try {
       const lottos = this.machine.issuedLotto(money);
-      this.view.renderLottoList(lottos);
-
-      this.view.showWinningInput();
+      this.LottoListView.renderLottoList(lottos);
+      this.WinningInputView.showWinningInput();
     } catch (error) {
       alert(error.message);
     }
@@ -32,7 +39,9 @@ class App {
     try {
       const { countMatchRank, returnOnInvestment } =
         this.machine.calculateResult(winningNumbers, bonusNumber);
-      this.view.renderResult(countMatchRank, returnOnInvestment);
+
+      console.log(countMatchRank, returnOnInvestment);
+      this.ResultModalView.renderResult(countMatchRank, returnOnInvestment);
     } catch (error) {
       alert(error.message);
     }
@@ -40,7 +49,10 @@ class App {
 
   handleReset() {
     this.machine = new LottoMachine();
-    this.view.resetUI();
+    this.MoneyView.reset();
+    this.ResultModalView.reset();
+    this.LottoListView.reset();
+    this.WinningInputView.reset();
 
     console.log("앱이 초기화되었습니다.");
   }
