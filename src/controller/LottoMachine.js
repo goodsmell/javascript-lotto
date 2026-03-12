@@ -3,18 +3,17 @@ import LottoStore from "../model/LottoStore.js";
 import WinningLotto from "../model/WinningLotto.js";
 import Lotto from "../model/Lotto.js";
 class LottoMachine {
+  #lottos = [];
   #money;
-  #lotto;
-  constructor() {}
 
-  setMoney(money) {
-    this.#money = new Money(money).getMoney();
+  #setMoney(money) {
+    this.#money = new Money(money);
   }
 
   issuedLotto(money) {
-    this.setMoney(money);
-    this.#lotto = new LottoStore().issuedLottos(this.#money);
-    return [...this.#lotto];
+    this.#setMoney(money);
+    this.#lottos = new LottoStore().issuedLottos(this.#money.getMoney());
+    return [...this.#lottos];
   }
 
   calculateResult(winningNumbers, BonusNumbers) {
@@ -24,24 +23,13 @@ class LottoMachine {
       new Lotto(winningNumbers),
       bonusNumber,
     );
-    const lottoResult = winningLotto.evaluateLottos(this.#lotto);
+    const lottoResult = winningLotto.evaluateLottos(this.#lottos);
     return {
       countMatchRank: lottoResult.getCounts(),
-      returnOnInvestment: lottoResult.getReturnOnInvestment(this.#money),
+      returnOnInvestment: lottoResult.getReturnOnInvestment(
+        this.#money.getMoney(),
+      ),
     };
-  }
-
-  async #playGame() {
-    //     const lottos = this.#lottoStore.issuedLottos(money.getMoney());
-    //     Output.printPurchasedLottos(lottos);
-    //     const winningNumbers = await this.#askWinningNumbers();
-    //     const winningLotto = await this.#askBonusNumber(winningNumbers);
-    //     const lottoGameResult = winningLotto.evaluateLottos(lottos);
-    //     const returnOnInvestment = lottoGameResult.getReturnOnInvestment(
-    //       money.getMoney(),
-    //     );
-    //     Output.printResult(lottoGameResult.getCounts(), returnOnInvestment);
-    //
   }
 }
 export default LottoMachine;
