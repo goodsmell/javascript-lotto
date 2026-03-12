@@ -29,7 +29,33 @@
             </form>
           </section>
           <section id="lotto-number-container"></section>
-          <section id="winning-bonus-container"></section>
+          <section id="winning-bonus-container" class="hidden">
+            <h2 class="lotto-body">
+              지난 주 당첨 번호 6개와 보너스 번호 1개를 입력해 주세요.
+            </h2>
+            <form id="winning-numbers-form">
+              <div class="winning-numbers-group">
+                <label>당첨 번호</label>
+                <div class="winning-numbers-inputs">
+                  <input type="number" class="winning-number-input" />
+                  <input type="number" class="winning-number-input" />
+                  <input type="number" class="winning-number-input" />
+                  <input type="number" class="winning-number-input" />
+                  <input type="number" class="winning-number-input" />
+                  <input type="number" class="winning-number-input" />
+                </div>
+              </div>
+
+              <div class="bonus-number-group">
+                <label>보너스 번호</label>
+                <input type="number" id="bonus-number-input" />
+              </div>
+
+              <button type="submit" id="result-button" class="lotto-button">
+                결과 확인하기
+              </button>
+            </form>
+          </section>
         </section>
       </main>
       <footer id="footer" class="footer">
