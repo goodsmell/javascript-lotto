@@ -38,7 +38,23 @@ class App {
     }
   }
 
-  renderLottoList(lottos) {}
+  renderLottoList(lottos) {
+    this.$lottoNumberSection.innerHTML = `
+      <p class="lotto-body">총 ${lottos.length}개를 구매하였습니다.</p>
+      <div class="lotto-numbers">
+        ${lottos
+          .map((number) => {
+            return `
+            <div id="numbers">
+            <span class="lotto-icon">🎟️</span>
+            <p class = "lotto-body">${number.getNumbers()}</p>
+            </div>
+          `;
+          })
+          .join("")}
+      </div>
+    `;
+  }
 }
 
 export default App;
