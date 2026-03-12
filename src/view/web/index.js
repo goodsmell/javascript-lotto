@@ -32,6 +32,11 @@ class LottoView {
       this.$modal.classList.add("hidden");
     });
   }
+  bindReset(handler) {
+    this.$resetButton.addEventListener("click", () => {
+      handler();
+    });
+  }
 
   // 💡 당첨 번호 제출 이벤트를 감시하는 함수
   bindCalculate(handler) {
@@ -84,6 +89,16 @@ class LottoView {
 
   showWinningInput() {
     this.$winningSection.classList.remove("hidden");
+  }
+
+  resetUI() {
+    this.$modal.classList.add("hidden");
+    this.$winningSection.classList.add("hidden");
+
+    this.$moneyForm.reset();
+    this.$winningNumbersForm.reset();
+
+    this.$lottoNumberSection.innerHTML = "";
   }
 }
 

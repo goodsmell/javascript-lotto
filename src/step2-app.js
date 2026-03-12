@@ -12,6 +12,7 @@ class App {
     this.view.bindPurchase((money) => this.handlePurchase(money));
     this.view.bindCalculate((data) => this.handleCalculateResults(data));
     this.view.bindCloseModal();
+    this.view.bindReset(() => this.handleReset());
   }
 
   // 구매 처리 함수
@@ -35,6 +36,13 @@ class App {
     } catch (error) {
       alert(error.message);
     }
+  }
+
+  handleReset() {
+    this.machine = new LottoMachine();
+    this.view.resetUI();
+
+    console.log("앱이 초기화되었습니다.");
   }
 }
 
