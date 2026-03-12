@@ -6,27 +6,30 @@ import LottoMachine from "./service/LottoMachine.js";
 
 class App {
   constructor() {
-    this.MoneyView = new MoneyInput();
-    this.ResultModalView = new ResultModal();
-    this.LottoListView = new LottoList();
-    this.WinningInputView = new WinningInput();
-    this.LottoService = new LottoMachine();
+    this.views = {
+      money: new MoneyInput(),
+      modal: new ResultModal(),
+      list: new LottoList(),
+      winning: new WinningInput(),
+    };
+
+    this.service = new LottoMachine();
   }
 
   init() {
-    this.MoneyView.bindPurchase((money) => this.handlePurchase(money));
-    this.WinningInputView.bindCalculate((data) =>
+    this.views.money.bindPurchase((money) => this.handlePurchase(money));
+    this.views.winning.bindCalculate((data) =>
       this.handleCalculateResults(data),
     );
-    this.ResultModalView.bindCloseModal();
-    this.ResultModalView.bindReset(() => this.handleReset());
+    this.views.modal.bindCloseModal();
+    this.views.modal.bindReset(() => this.handleReset());
   }
 
   handlePurchase(money) {
     try {
-      const lottos = this.LottoService.issueLottos(money);
-      this.LottoListView.renderLottoList(lottos);
-      this.WinningInputView.showWinningInput();
+      const lottos = this.service.issueLottos(money);
+      this.views.list.renderLottoList(lottos);
+      this.views.winning.showWinningInput();
     } catch (error) {
       alert(error.message);
     }
@@ -35,21 +38,21 @@ class App {
   handleCalculateResults({ winningNumbers, bonusNumber }) {
     try {
       const { countMatchRank, returnOnInvestment } =
-        this.LottoService.calculateResult(winningNumbers, bonusNumber);
+        this.service.calculateResult(winningNumbers, bonusNumber);
 
       console.log(countMatchRank, returnOnInvestment);
-      this.ResultModalView.renderResult(countMatchRank, returnOnInvestment);
+      this.views.modal.renderResult(countMatchRank, returnOnInvestment);
     } catch (error) {
       alert(error.message);
     }
   }
 
   handleReset() {
-    this.LottoService = new LottoMachine();
-    this.MoneyView.reset();
-    this.ResultModalView.reset();
-    this.LottoListView.reset();
-    this.WinningInputView.reset();
+    this.service = new LottoMachine();
+    this.views.money.reset();
+    this.views.modal.reset();
+    this.views.list.reset();
+    this.views.winning.reset();
 
     console.log("앱이 초기화되었습니다.");
   }
