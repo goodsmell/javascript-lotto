@@ -13,7 +13,6 @@ class App {
     this.machine = new LottoMachine();
   }
 
-  // 초기화
   init() {
     this.MoneyView.bindPurchase((money) => this.handlePurchase(money));
     this.WinningInputView.bindCalculate((data) =>
@@ -23,10 +22,9 @@ class App {
     this.ResultModalView.bindReset(() => this.handleReset());
   }
 
-  // 구매 처리 함수
   handlePurchase(money) {
     try {
-      const lottos = this.machine.issuedLotto(money);
+      const lottos = this.machine.issueLottos(money);
       this.LottoListView.renderLottoList(lottos);
       this.WinningInputView.showWinningInput();
     } catch (error) {
@@ -34,7 +32,6 @@ class App {
     }
   }
 
-  // 결과 계산 함수
   handleCalculateResults({ winningNumbers, bonusNumber }) {
     try {
       const { countMatchRank, returnOnInvestment } =
