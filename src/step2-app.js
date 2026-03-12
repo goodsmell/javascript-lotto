@@ -9,8 +9,8 @@ class App {
 
   // 초기화
   init() {
-    // View에게 구매 버튼 누르면 App한테 알려달라고 등록
     this.view.bindPurchase((money) => this.handlePurchase(money));
+    this.view.bindCalculate((data) => this.handleCalculateResults(data));
   }
 
   // 구매 처리 함수
@@ -18,6 +18,18 @@ class App {
     try {
       const lottos = this.machine.issuedLotto(money);
       this.view.renderLottoList(lottos);
+
+      this.view.showWinningInput();
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  // 결과 계산 함수
+  handleCalculateResults({ winningNumbers, bonusNumber }) {
+    try {
+      const result = this.machine.calculateResult(winningNumbers, bonusNumber);
+      console.log("계산 결과:", result);
     } catch (error) {
       alert(error.message);
     }

@@ -1,5 +1,7 @@
 import Money from "../model/Money.js";
 import LottoStore from "../model/LottoStore.js";
+import WinningLotto from "../model/WinningLotto.js";
+import Lotto from "../model/Lotto.js";
 class LottoMachine {
   #money;
   #lotto;
@@ -13,6 +15,15 @@ class LottoMachine {
     this.setMoney(money);
     this.#lotto = new LottoStore().issuedLottos(this.#money.getMoney());
     return [...this.#lotto];
+  }
+
+  calculateResult(winningNumbers, BonusNumbers) {
+    const bonusNumber = Number(BonusNumbers);
+    const winningLotto = new Lotto(winningNumbers);
+
+    const resultLotto = new WinningLotto(winningLotto, bonusNumber);
+
+    return resultLotto.evaluateLottos(this.#lotto);
   }
 
   async #playGame() {

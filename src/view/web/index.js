@@ -5,6 +5,12 @@ class LottoView {
     this.$lottoNumberSection = document.querySelector(
       "#lotto-number-container",
     );
+    this.$winningNumbersForm = document.querySelector("#winning-numbers-form");
+    this.$winningNumberInputs = document.querySelectorAll(
+      ".winning-number-input",
+    );
+    this.$winningSection = document.querySelector("#winning-bonus-container");
+    this.$bonusNumberInput = document.querySelector("#bonus-number-input");
   }
 
   bindPurchase(handler) {
@@ -12,6 +18,20 @@ class LottoView {
       e.preventDefault();
       const moneyValue = this.$moneyInput.value;
       handler(moneyValue);
+    });
+  }
+
+  // 💡 당첨 번호 제출 이벤트를 감시하는 함수
+  bindCalculate(handler) {
+    this.$winningNumbersForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const winningNumbers = Array.from(this.$winningNumberInputs).map(
+        (input) => Number(input.value),
+      );
+      const bonusNumber = Number(this.$bonusNumberInput.value);
+      
+      handler({ winningNumbers, bonusNumber });
     });
   }
 
@@ -32,6 +52,9 @@ class LottoView {
     `;
   }
 
+  showWinningInput() {
+    this.$winningSection.classList.remove("hidden");
+  }
 }
 
 export default LottoView;
