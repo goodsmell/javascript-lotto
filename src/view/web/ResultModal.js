@@ -1,3 +1,5 @@
+import closeIcon from "../../asset/close_modal_icon.svg";
+
 class ResultModal {
   constructor() {
     this.$modal = document.querySelector("#result-modal");
@@ -5,8 +7,12 @@ class ResultModal {
     this.$resultTableBody = document.querySelector("#result-table-body");
     this.$profitRate = document.querySelector("#total-profit-rate");
     this.$resetButton = document.querySelector("#reset-button");
+    this.initCloseButton();
   }
 
+  initCloseButton() {
+    this.$modalCloseButton.innerHTML = `<img src="${closeIcon}" alt="close" class="close-icon" />`;
+  }
   bindCloseModal() {
     this.$modalCloseButton.addEventListener("click", () => {
       this.$modal.classList.add("hidden");

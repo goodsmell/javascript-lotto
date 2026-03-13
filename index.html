@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./src/styles/text.css" />
     <link rel="stylesheet" href="./src/styles/common.css" />
     <link rel="stylesheet" href="./src/styles/modal.css" />
+    <link rel="stylesheet" href="./index.css" />
   </head>
 
   <body>
@@ -35,24 +36,30 @@
               지난 주 당첨 번호 6개와 보너스 번호 1개를 입력해 주세요.
             </h2>
             <form id="winning-numbers-form">
-              <div class="winning-numbers-group">
-                <label>당첨 번호</label>
-                <div class="winning-numbers-inputs">
-                  <input type="number" class="winning-number-input" />
-                  <input type="number" class="winning-number-input" />
-                  <input type="number" class="winning-number-input" />
-                  <input type="number" class="winning-number-input" />
-                  <input type="number" class="winning-number-input" />
-                  <input type="number" class="winning-number-input" />
+              <section class="number-group">
+                <div class="winning-numbers-group">
+                  <label class="lotto-body">당첨 번호</label>
+                  <div class="winning-numbers-inputs">
+                    <input type="number" class="winning-number-input" />
+                    <input type="number" class="winning-number-input" />
+                    <input type="number" class="winning-number-input" />
+                    <input type="number" class="winning-number-input" />
+                    <input type="number" class="winning-number-input" />
+                    <input type="number" class="winning-number-input" />
+                  </div>
                 </div>
-              </div>
 
-              <div class="bonus-number-group">
-                <label>보너스 번호</label>
-                <input type="number" id="bonus-number-input" />
-              </div>
+                <div class="bonus-number-group">
+                  <label class="lotto-body">보너스 번호</label>
+                  <input type="number" class="bonus-number-input" />
+                </div>
+              </section>
 
-              <button type="submit" id="result-button" class="lotto-button">
+              <button
+                type="submit"
+                id="result-button"
+                class="lotto-button lotto-caption"
+              >
                 결과 확인하기
               </button>
             </form>
@@ -67,20 +74,24 @@
     <div id="result-modal" class="result-modal hidden">
       <div class="modal-overlay"></div>
       <div class="modal-content">
-        <button id="modal-close-button">X</button>
-        <h1>🏆 당첨 통계 🏆</h1>
+        <div class="close-button-area">
+          <button id="modal-close-button"></button>
+        </div>
+
+        <h1 class="lotto-subtitle">🏆 당첨 통계 🏆</h1>
 
         <table class="result-table">
           <thead>
             <tr>
               <th>일치 갯수</th>
               <th>당첨금</th>
-              <th>당첨 횟수</th>
+              <th>당첨 갯수</th>
             </tr>
           </thead>
           <tbody id="result-table-body"></tbody>
         </table>
-        <p id="total-profit-rate" class="lotto-body">
+
+        <p id="total-profit-rate" class="lotto-body total-profit-rate">
           당신의 총 수익률은 0%입니다.
         </p>
 

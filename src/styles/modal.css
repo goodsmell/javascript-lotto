@@ -22,8 +22,45 @@
 .modal-content {
   position: relative;
   background-color: white;
-  padding: 32px;
+  padding: 20px;
   border-radius: 8px;
-  width: 400px;
+  width: 350px;
+  height: 500px;
   text-align: center;
+}
+
+#modal-close-button {
+  border: none;
+  background: none;
+}
+
+.close-button-area {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.result-table {
+  margin-top: 30px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.result-table th,
+.result-table td {
+  padding: 7px;
+  border-bottom: 1px solid black;
+  border-color: #0000001f;
+
+  text-align: center;
+}
+
+.result-table thead {
+  border-top: 1px solid black;
+  border-color: #0000001f;
+}
+
+.total-profit-rate {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }

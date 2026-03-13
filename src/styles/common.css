@@ -38,59 +38,6 @@ p {
   color: var(--color-lotto-greyscale-1);
 }
 
-.app-container {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-lotto-greyscale-2);
-}
-.lotto-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 414px;
-  height: 727px;
-  padding: 0 16px;
-
-  background-color: var(--color-lotto-greyscale-1);
-  border: 1px solid #0000001f;
-}
-
-.lotto-container > h1 {
-  margin: 0 auto;
-  padding-top: 40px;
-}
-
-.lotto-container #money-form {
-  display: flex;
-  justify-content: space-between;
-}
-
-.lotto-container #money-input {
-  border: 1px solid #b4b4b4;
-  width: 310px;
-  height: 36px;
-  border-radius: 4px;
-
-  opacity: 1;
-  padding: 8px;
-}
-
-.lotto-container #money-input-button {
-  width: 56px;
-  height: 36px;
-  border-radius: 4px;
-
-  opacity: 1;
-  padding-top: 6px 6px 8px;
-
-  background: #4e5ba6;
-
-  border: none;
-  color: #ffffff;
-}
-
 .footer {
   display: flex;
   align-items: center;
@@ -100,18 +47,4 @@ p {
   border-top: 1px solid #4e5ba633;
 
   color: var(--color-lotto-primary);
-}
-
-.lotto-container #lotto-number-container {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #b4b4b4;
-}
-
-.lotto-body {
-  border: 1px solid #b4b4b4;
-}
-.lotto-numbers #numbers {
-  display: flex;
-  flex-direction: row;
 }
