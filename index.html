@@ -24,10 +24,22 @@
             🎱 내 번호 당첨 확인 🎱
           </h2>
           <section class="money-container">
-            <p class="text-lotto-body">구입할 금액을 입력해주세요.</p>
             <form class="money-form">
-              <input class="money-input" placeholder="금액" type="number" />
-              <button class="money-input-button text-lotto-caption">구입</button>
+              <label for="money-input" class="text-lotto-body"
+                >구입할 금액을 입력해주세요.</label
+              >
+              <div class="money-input-wrapper">
+                <input
+                  id="money-input"
+                  class="money-input"
+                  type="number"
+                  placeholder="금액"
+                  required
+                />
+                <button class="money-input-button text-lotto-caption">
+                  구입
+                </button>
+              </div>
             </form>
           </section>
           <section class="lotto-number-container"></section>
@@ -37,21 +49,57 @@
             </h2>
             <form class="winning-numbers-form">
               <section class="number-group">
-                <div class="winning-numbers-group">
-                  <label class="text-lotto-body">당첨 번호</label>
+                <fieldset class="winning-numbers-group">
+                  <legend class="text-lotto-body">당첨 번호</legend>
                   <div class="winning-numbers-inputs">
-                    <input type="number" class="winning-number-input" />
-                    <input type="number" class="winning-number-input" />
-                    <input type="number" class="winning-number-input" />
-                    <input type="number" class="winning-number-input" />
-                    <input type="number" class="winning-number-input" />
-                    <input type="number" class="winning-number-input" />
+                    <input
+                      type="number"
+                      id="winning-number-1"
+                      class="winning-number-input"
+                      aria-label="첫 번째 당첨 번호"
+                    />
+                    <input
+                      type="number"
+                      id="winning-number-2"
+                      class="winning-number-input"
+                      aria-label="두 번째 당첨 번호"
+                    />
+                    <input
+                      type="number"
+                      id="winning-number-3"
+                      class="winning-number-input"
+                      aria-label="세 번째 당첨 번호"
+                    />
+                    <input
+                      type="number"
+                      id="winning-number-4"
+                      class="winning-number-input"
+                      aria-label="네 번째 당첨 번호"
+                    />
+                    <input
+                      type="number"
+                      id="winning-number-5"
+                      class="winning-number-input"
+                      aria-label="다섯 번째 당첨 번호"
+                    />
+                    <input
+                      type="number"
+                      id="winning-number-6"
+                      class="winning-number-input"
+                      aria-label="여섯 번째 당첨 번호"
+                    />
                   </div>
-                </div>
+                </fieldset>
 
                 <div class="bonus-number-group">
-                  <label class="text-lotto-body">보너스 번호</label>
-                  <input type="number" class="bonus-number-input" />
+                  <label for="bonus-number" class="text-lotto-body"
+                    >보너스 번호</label
+                  >
+                  <input
+                    type="number"
+                    id="bonus-number"
+                    class="bonus-number-input"
+                  />
                 </div>
               </section>
 
@@ -87,7 +135,9 @@
           <tbody class="result-table-body"></tbody>
         </table>
 
-        <p class="text-lotto-body total-profit-rate">당신의 총 수익률은 0%입니다.</p>
+        <p class="text-lotto-body total-profit-rate">
+          당신의 총 수익률은 0%입니다.
+        </p>
 
         <button class="lotto-button reset-button" type="button">
           다시 시작하기
