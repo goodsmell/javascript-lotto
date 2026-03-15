@@ -127,7 +127,16 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+
+  border: none;
+  padding: 0;
+  margin: 0;
 }
+
+.winning-numbers-group legend {
+  padding: 0;
+}
+
 .bonus-number-group {
   display: flex;
   flex-direction: column;
