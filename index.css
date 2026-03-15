@@ -77,18 +77,13 @@
   overflow-y: auto;
 }
 
-.winning-number-input {
+.lotto-number-input {
   width: 34px;
   height: 36px;
   border-radius: 4px;
   border: 1px solid #b4b4b4;
 }
-.bonus-number-input {
-  width: 34px;
-  height: 36px;
-  border-radius: 4px;
-  border: 1px solid #b4b4b4;
-}
+
 
 .winning-numbers-form {
   display: flex;
