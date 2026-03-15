@@ -1,8 +1,11 @@
+import { LOTTO } from "./index.js";
+
 export const MONEY_ERROR_MESSAGE = Object.freeze({
   INPUT_NOT_NUMBER: "[ERROR] 구입 금액은 숫자만 입력 가능합니다..\n",
   INPUT_NOT_INTEGER: "[ERROR] 구입 금액은 정수만 입력 가능합니다.\n",
   INPUT_NOT_THOUSAND_UNIT: "[ERROR] 금액은 1000원 단위로 입력 가능합니다.\n",
   INPUT_NEGATIVE: "[ERROR] 금액은 양수만 입력 가능합니다.",
+  INPUT_EXCEED_MAX: `[ERROR] 최대 구입 금액은 ${LOTTO.MAX_PRICE.toLocaleString()}원입니다.\n`,
 });
 
 export const LOTTO_ERROR_MESSAGE = Object.freeze({

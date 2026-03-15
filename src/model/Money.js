@@ -14,6 +14,7 @@ class Money {
     this.#validateInteger(amount);
     this.#validatePositive(amount);
     this.#validateThousandUnit(amount);
+    this.#validateMaxAmount(amount);
   }
 
   #validateNumber(amount) {
@@ -36,6 +37,12 @@ class Money {
   #validateThousandUnit(amount) {
     if (amount % LOTTO.PRICE !== 0) {
       throw new Error(MONEY_ERROR_MESSAGE.INPUT_NOT_THOUSAND_UNIT);
+    }
+  }
+
+  #validateMaxAmount(amount) {
+    if (amount > LOTTO.MAX_PRICE) {
+      throw new Error(MONEY_ERROR_MESSAGE.INPUT_EXCEED_MAX);
     }
   }
 
