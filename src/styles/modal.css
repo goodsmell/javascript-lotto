@@ -10,7 +10,7 @@
   z-index: 1000;
 }
 
-.modal-overlay {
+.result-modal__overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -19,7 +19,7 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
+.result-modal__content {
   position: relative;
   background-color: white;
   padding: 20px;
@@ -29,25 +29,25 @@
   text-align: center;
 }
 
-.modal-close-button {
+.result-modal__close-button {
   border: none;
   background: none;
 }
 
-.close-button-area {
+.result-modal__close-button-area {
   display: flex;
   justify-content: flex-end;
   width: 100%;
 }
 
-.result-table {
+.result-modal__table {
   margin-top: 30px;
   width: 100%;
   border-collapse: collapse;
 }
 
-.result-table th,
-.result-table td {
+.result-modal__table th,
+.result-modal__table td {
   padding: 7px;
   border-bottom: 1px solid black;
   border-color: #0000001f;
@@ -55,12 +55,12 @@
   text-align: center;
 }
 
-.result-table thead {
+.result-modal__table thead {
   border-top: 1px solid black;
   border-color: #0000001f;
 }
 
-.total-profit-rate {
+.result-modal__profit-rate {
   margin-top: 30px;
   margin-bottom: 30px;
 }

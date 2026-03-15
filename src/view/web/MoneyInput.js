@@ -1,6 +1,6 @@
 class MoneyInput {
   constructor() {
-    this.$moneyInput = document.querySelector(".money-input");
+    this.$moneyInput = document.querySelector(".money-form__input");
     this.$moneyForm = document.querySelector(".money-form");
   }
 

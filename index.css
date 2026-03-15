@@ -17,7 +17,7 @@
   border: 1px solid #0000001f;
 }
 
-.lotto-container-title {
+.lotto-container__title {
   margin: 0 auto;
   padding-top: 40px;
 }
@@ -27,7 +27,7 @@
   flex-direction: column;
 }
 
-.money-input {
+.money-form__input {
   border: 1px solid #b4b4b4;
   width: 310px;
   height: 36px;
@@ -37,7 +37,7 @@
   padding: 8px;
 }
 
-.money-input-button {
+.money-form__button {
   width: 56px;
   height: 36px;
   border-radius: 4px;
@@ -51,28 +51,28 @@
   color: #ffffff;
 }
 
-.lotto-number-container {
+.lotto-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.lotto-item {
+.lotto-list__item {
   display: flex;
   gap: 7px;
 }
 
-.lotto-icon-img {
+.lotto-list__icon {
   width: 34px;
   height: 36px;
 }
 
-.lotto-item-numbers {
+.lotto-list__numbers {
   display: flex;
   align-items: center;
 }
 
-.lotto-numbers {
+.lotto-list__container {
   max-height: 276px;
   overflow-y: auto;
 }
@@ -84,20 +84,19 @@
   border: 1px solid #b4b4b4;
 }
 
-
-.winning-numbers-form {
+.winning-section__form {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-.bonus-number-group {
+.winning-section__bonus-area {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
-.number-group {
+.winning-section__container {
   display: flex;
   justify-content: space-between;
 }
@@ -118,7 +117,7 @@
   gap: 5px;
 }
 
-.winning-numbers-group {
+.winning-section__fieldset {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -128,12 +127,6 @@
   margin: 0;
 }
 
-.winning-numbers-group legend {
+.winning-section__fieldset legend {
   padding: 0;
-}
-
-.bonus-number-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
 }

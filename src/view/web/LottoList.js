@@ -3,14 +3,14 @@ import lottoIcon from "../../asset/lotto_icon.png";
 class LottoList {
   constructor() {
     this.$lottoNumberSection = document.querySelector(
-      ".lotto-number-container",
+      ".lotto-list",
     );
   }
 
   renderLottoList(lottos) {
     this.$lottoNumberSection.innerHTML = `
-      <p class="text-lotto-body">총 ${lottos.length}개를 구매하였습니다.</p>
-      <div class = "lotto-numbers" >
+      <p class="text-lotto-body lotto-list__count">총 ${lottos.length}개를 구매하였습니다.</p>
+      <div class = "lotto-list__container" >
         ${lottos.map((lotto) => this._lottoTemplate(lotto)).join("")}
       </div>
     `;
@@ -18,8 +18,8 @@ class LottoList {
 
   _lottoTemplate(lotto) {
     return `
-      <div class="lotto-item"> <img src="${lottoIcon}" alt="lotto-icon" class="lotto-icon-img" />
-        <p class="text-lotto-body lotto-item-numbers">${lotto.getNumbers().join(", ")}</p>
+      <div class="lotto-list__item"> <img src="${lottoIcon}" alt="lotto-icon" class="lotto-list__icon" />
+        <p class="text-lotto-body lotto-list__numbers">${lotto.getNumbers().join(", ")}</p>
       </div>
     `;
   }
