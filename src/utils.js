@@ -20,3 +20,7 @@ export const parseNumbers = (raw) => {
   const numbers = raw.split(",").map(Number);
   return numbers;
 };
+
+export const formatROI = (roi) => {
+  return Math.round(roi * 100) / 100;
+};
