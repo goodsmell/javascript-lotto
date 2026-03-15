@@ -1,26 +1,26 @@
 /* 타이포그래피 공통 클래스 */
-.lotto-title {
+.text-lotto-title {
   font-family: var(--font-family);
   font-size: var(--font-size-title);
   font-weight: var(--font-weight-extra-bold);
   line-height: 36px;
 }
 
-.lotto-subtitle {
+.text-lotto-subtitle {
   font-family: var(--font-family);
   font-size: var(--font-size-subtitle);
   font-weight: var(--font-weight-semi-bold);
   line-height: 24px;
 }
 
-.lotto-body {
+.text-lotto-body {
   font-family: var(--font-family);
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-regular);
   line-height: 24px;
 }
 
-.lotto-placeholder {
+.text-lotto-placeholder {
   font-family: var(--font-family);
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-regular);
@@ -28,10 +28,9 @@
   color: #8b8b8b;
 }
 
-.lotto-caption {
+.text-lotto-caption {
   font-family: var(--font-family);
   font-size: var(--font-size-caption);
   font-weight: var(--font-weight-bold);
   line-height: 24px;
 }
-
