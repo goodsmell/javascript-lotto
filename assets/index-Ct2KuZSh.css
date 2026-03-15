@@ -1,0 +1,299 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;800&display=swap");
+/* 파일 통합 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+p {
+  margin: 0;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+:root {
+  --font-family:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Font Sizes  */
+  --font-size-title: 24px;
+  --font-size-subtitle: 20px;
+  --font-size-body: 15px;
+  --font-size-caption: 14px;
+
+  /* Line Heights */
+  --line-height-title: 36px;
+  --line-height-default: 24px;
+
+  /* Font Weights */
+  --font-weight-extra-bold: 800;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+  --font-weight-regular: 400;
+
+  /* Color Palette */
+  --color-lotto-primary: #4e5ba6;
+  --color-lotto-greyscale-1: #ffffff;
+  --color-lotto-greyscale-2: #fcfcfd;
+  --color-lotto-greyscale-3: #b4b4b4;
+  --color-lotto-greyscale-4: #8b8b8b;
+  --color-lotto-greyscale-5: #000000;
+}
+.hidden {
+  display: none !important;
+}
+.lotto-button {
+  background: #4e5ba6;
+  width: 100%;
+  height: 36px;
+  border: none;
+  border-radius: 4px;
+
+  color: var(--color-lotto-greyscale-1);
+}
+.lotto-number-input {
+  width: 34px;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid #b4b4b4;
+}
+.text-lotto-title {
+  font-family: var(--font-family);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-extra-bold);
+  line-height: 36px;
+}
+.text-lotto-subtitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-semi-bold);
+  line-height: 24px;
+}
+.text-lotto-body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: 24px;
+}
+.text-lotto-placeholder {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: 24px;
+  color: #8b8b8b;
+}
+.text-lotto-caption {
+  font-family: var(--font-family);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-bold);
+  line-height: 24px;
+}
+/* 컴포넌트 */
+.header {
+  display: flex;
+  align-items: center;
+  margin: 0;
+
+  width: 100%;
+  height: 6.25vh;
+  padding-left: 9.02%;
+
+  background-color: var(--color-lotto-primary);
+  color: var(--color-lotto-greyscale-1);
+}
+.app-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-lotto-greyscale-2);
+}
+.lotto-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 414px;
+  height: 727px;
+  padding: 0 16px;
+
+  background-color: var(--color-lotto-greyscale-1);
+  border: 1px solid #0000001f;
+}
+.lotto-container__title {
+  margin: 0 auto;
+  padding-top: 40px;
+}
+.money-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.money-form {
+  display: flex;
+  flex-direction: column;
+}
+.money-form__input {
+  border: 1px solid #b4b4b4;
+  width: 310px;
+  height: 36px;
+  border-radius: 4px;
+
+  opacity: 1;
+  padding: 8px;
+}
+.money-form__button {
+  width: 56px;
+  height: 36px;
+  border-radius: 4px;
+
+  opacity: 1;
+  padding-top: 6px 6px 8px;
+
+  background: #4e5ba6;
+
+  border: none;
+  color: #ffffff;
+}
+.lotto-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lotto-list__item {
+  display: flex;
+  gap: 7px;
+}
+.lotto-list__icon {
+  width: 34px;
+  height: 36px;
+}
+.lotto-list__numbers {
+  display: flex;
+  align-items: center;
+}
+.lotto-list__container {
+  max-height: 276px;
+  overflow-y: auto;
+}
+.winning-section__form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.winning-section__bonus-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.winning-section__container {
+  display: flex;
+  justify-content: space-between;
+}
+.winning-section__fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.winning-section__fieldset legend {
+  padding: 0;
+}
+.result-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.result-modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.result-modal__content {
+  position: relative;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 350px;
+  height: 500px;
+  text-align: center;
+}
+.result-modal__close-button {
+  border: none;
+  background: none;
+}
+.result-modal__close-button-area {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.result-modal__table {
+  margin-top: 30px;
+  width: 100%;
+  border-collapse: collapse;
+}
+.result-modal__table th,
+.result-modal__table td {
+  padding: 7px;
+  border-bottom: 1px solid black;
+  border-color: #0000001f;
+
+  text-align: center;
+}
+.result-modal__table thead {
+  border-top: 1px solid black;
+  border-color: #0000001f;
+}
+.result-modal__profit-rate {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 7.8vh;
+  border-top: 1px solid #4e5ba633;
+
+  color: var(--color-lotto-primary);
+}
+/* 전역 레이아웃 및 타이포그래피 */
+body {
+  background-color: var(--color-lotto-greyscale-2);
+  color: var(--color-lotto-greyscale-6);
+
+  font-family:
+    "Pretendard",
+    -apple-system,
+    sans-serif;
+  line-height: 1.5;
+
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+#app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
