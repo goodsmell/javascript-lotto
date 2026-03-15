@@ -23,6 +23,7 @@ input::-webkit-inner-spin-button {
   flex-direction: column;
   flex: 1;
 }
+
 p {
   margin: 0;
 }
