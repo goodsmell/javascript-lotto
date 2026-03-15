@@ -4,8 +4,8 @@
  */
 
 import App from "./step2-app";
+
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("로또 앱 시동 완료! 🏎️");
   const lottoApp = new App();
   lottoApp.init();
 });
