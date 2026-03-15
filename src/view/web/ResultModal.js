@@ -2,11 +2,11 @@ import closeIcon from "../../asset/close_modal_icon.svg";
 
 class ResultModal {
   constructor() {
-    this.$modal = document.querySelector("#result-modal");
-    this.$modalCloseButton = document.querySelector("#modal-close-button");
-    this.$resultTableBody = document.querySelector("#result-table-body");
-    this.$profitRate = document.querySelector("#total-profit-rate");
-    this.$resetButton = document.querySelector("#reset-button");
+    this.$modal = document.querySelector(".result-modal");
+    this.$modalCloseButton = document.querySelector(".modal-close-button");
+    this.$resultTableBody = document.querySelector(".result-table-body");
+    this.$profitRate = document.querySelector(".total-profit-rate");
+    this.$resetButton = document.querySelector(".reset-button");
     this.initCloseButton();
   }
 

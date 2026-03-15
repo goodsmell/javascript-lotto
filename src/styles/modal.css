@@ -29,7 +29,7 @@
   text-align: center;
 }
 
-#modal-close-button {
+. modal-close-button {
   border: none;
   background: none;
 }

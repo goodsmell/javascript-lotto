@@ -3,14 +3,14 @@ import lottoIcon from "../../asset/lotto_icon.png";
 class LottoList {
   constructor() {
     this.$lottoNumberSection = document.querySelector(
-      "#lotto-number-container",
+      ".lotto-number-container",
     );
   }
 
   renderLottoList(lottos) {
     this.$lottoNumberSection.innerHTML = `
       <p class="lotto-body">총 ${lottos.length}개를 구매하였습니다.</p>
-      <div id = "lotto-numbers" >
+      <div class = "lotto-numbers" >
         ${lottos.map((lotto) => this._lottoTemplate(lotto)).join("")}
       </div>
     `;

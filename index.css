@@ -17,17 +17,17 @@
   border: 1px solid #0000001f;
 }
 
-.lotto-container > h1 {
+.lotto-container-title {
   margin: 0 auto;
   padding-top: 40px;
 }
 
-.lotto-container #money-form {
+.money-form {
   display: flex;
   justify-content: space-between;
 }
 
-.lotto-container #money-input {
+.money-input {
   border: 1px solid #b4b4b4;
   width: 310px;
   height: 36px;
@@ -37,7 +37,7 @@
   padding: 8px;
 }
 
-.lotto-container #money-input-button {
+.money-input-button {
   width: 56px;
   height: 36px;
   border-radius: 4px;
@@ -51,15 +51,10 @@
   color: #ffffff;
 }
 
-.lotto-container #lotto-number-container {
+.lotto-number-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-.lotto-numbers #numbers {
-  display: flex;
-  flex-direction: row;
 }
 
 .lotto-item {
@@ -77,7 +72,7 @@
   align-items: center;
 }
 
-#lotto-numbers {
+.lotto-numbers {
   max-height: 276px;
   overflow-y: auto;
 }
@@ -95,7 +90,7 @@
   border: 1px solid #b4b4b4;
 }
 
-#winning-numbers-form {
+.winning-numbers-form {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -122,7 +117,7 @@
   color: var(--color-lotto-greyscale-1);
 }
 
-#money-container {
+.money-container {
   display: flex;
   flex-direction: column;
   gap: 5px;

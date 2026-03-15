@@ -1,10 +1,10 @@
 class WinningInput {
   constructor() {
-    this.$winningNumbersForm = document.querySelector("#winning-numbers-form");
+    this.$winningNumbersForm = document.querySelector(".winning-numbers-form");
     this.$winningNumberInputs = document.querySelectorAll(
       ".winning-number-input",
     );
-    this.$winningSection = document.querySelector("#winning-bonus-container");
+    this.$winningSection = document.querySelector(".winning-bonus-container");
     this.$bonusNumberInput = document.querySelector(".bonus-number-input");
   }
 
