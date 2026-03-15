@@ -20,3 +20,11 @@ export const RANK_PRIZE = {
   [RANK.FOURTH]: 50_000,
   [RANK.FIFTH]: 5_000,
 };
+
+export const RANK_DESCRIPTION = {
+  [RANK.FIFTH]: "3개",
+  [RANK.FOURTH]: "4개",
+  [RANK.THIRD]: "5개",
+  [RANK.SECOND]: "5개 + 보너스 볼",
+  [RANK.FIRST]: "6개",
+};

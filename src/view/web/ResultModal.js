@@ -1,5 +1,5 @@
 import closeIcon from "../../asset/close_modal_icon.svg";
-
+import { RANK, RANK_DESCRIPTION, RANK_PRIZE } from "../../constant/index.js";
 class ResultModal {
   constructor() {
     this.$modal = document.querySelector(".result-modal");
@@ -34,13 +34,25 @@ class ResultModal {
   }
 
   _createResultTemplate(rankCounts) {
-    return `
-    <tr class="result-modal__table-row"><td>3개</td><td>5,000</td><td>${rankCounts.RANK_5 || 0}개</td></tr>
-    <tr class="result-modal__table-row"><td>4개</td><td>50,000</td><td>${rankCounts.RANK_4 || 0}개</td></tr>
-    <tr class="result-modal__table-row"><td>5개</td><td>1,500,000</td><td>${rankCounts.RANK_3 || 0}개</td></tr>
-    <tr class="result-modal__table-row"><td>5개 + 보너스 볼</td><td>30,000,000</td><td>${rankCounts.RANK_2 || 0}개</td></tr>
-    <tr class="result-modal__table-row"><td>6개</td><td>2,000,000,000</td><td>${rankCounts.RANK_1 || 0}개</td></tr>
-  `;
+    const ranks = [
+      RANK.FIFTH,
+      RANK.FOURTH,
+      RANK.THIRD,
+      RANK.SECOND,
+      RANK.FIRST,
+    ];
+
+    return ranks
+      .map(
+        (rank) => `
+    <tr class="result-modal__table-row">
+      <td>${RANK_DESCRIPTION[rank]}</td>
+      <td>${RANK_PRIZE[rank].toLocaleString()}</td>
+      <td>${rankCounts[rank] || 0}개</td>
+    </tr>
+  `,
+      )
+      .join("");
   }
 
   reset() {
