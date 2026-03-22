@@ -22,13 +22,13 @@ class App {
   }
 
   async #playGame() {
-    const money = await this.#askMoney();
+    const money = await this.#askNumber(INPUT_MESSAGE.PURCHASE_AMOUNT);
     const lottoMachine = new LottoMachine();
     const lottos = lottoMachine.issueLottos(money);
     Output.printPurchasedLottos(lottos);
 
     const winningNumbers = await this.#askWinningNumbers();
-    const bonusNumber = await this.#askBonusNumber(winningNumbers);
+    const bonusNumber = await this.#askNumber(INPUT_MESSAGE.BONUS_NUMBER);
     const winningLotto = lottoMachine.calculateResult(
       winningNumbers,
       bonusNumber,
@@ -40,13 +40,11 @@ class App {
     );
   }
 
-  async #askBonusNumber() {
+  async #askNumber(inputMessage) {
     return await this.#retry(async () => {
-      const inputBonus = await this.#input.readLineAsync(
-        INPUT_MESSAGE.BONUS_NUMBER,
-      );
+      const inputNumber = await this.#input.readLineAsync(inputMessage);
 
-      return Number(inputBonus);
+      return Number(inputNumber);
     });
   }
 
@@ -57,16 +55,6 @@ class App {
       );
       const winningNumbers = parseNumbers(inputWinningNumber);
       return winningNumbers;
-    });
-  }
-
-  async #askMoney() {
-    return await this.#retry(async () => {
-      const inputMoney = await this.#input.readLineAsync(
-        INPUT_MESSAGE.PURCHASE_AMOUNT,
-      );
-
-      return Number(inputMoney);
     });
   }
 
