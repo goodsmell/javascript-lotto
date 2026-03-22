@@ -1,5 +1,4 @@
 import { RANK_PRIZE } from "../constant/index.js";
-import { formatROI } from "../utils.js";
 class LottoResult {
   #counts;
 
@@ -18,8 +17,7 @@ class LottoResult {
     );
   }
   getReturnOnInvestment(amount) {
-    const roi = (this.getPrize() / amount) * 100;
-    return formatROI(roi);
+    return (this.getPrize() / amount) * 100;
   }
 }
 

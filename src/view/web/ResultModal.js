@@ -29,7 +29,7 @@ class ResultModal {
 
   renderResult(rankCounts, profitRate) {
     this.$resultTableBody.innerHTML = this._createResultTemplate(rankCounts);
-    this.$profitRate.innerText = `당신의 총 수익률은 ${profitRate}%입니다.`;
+    this.$profitRate.innerText = `당신의 총 수익률은 ${profitRate.toFixed(1)}%입니다.`;
     this.$modal.classList.remove("hidden");
   }
 

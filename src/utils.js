@@ -21,6 +21,3 @@ export const parseNumbers = (raw) => {
   return numbers;
 };
 
-export const formatROI = (roi) => {
-  return Math.round(roi * 100) / 100;
-};
