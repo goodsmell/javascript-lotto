@@ -41,7 +41,7 @@ class App {
   }
 
   async #askNumber(inputMessage) {
-    return await this.#retry(async () => {
+    return await this.#askAgain(async () => {
       const inputNumber = await this.#input.readLineAsync(inputMessage);
 
       return Number(inputNumber);
@@ -49,7 +49,7 @@ class App {
   }
 
   async #askWinningNumbers() {
-    return await this.#retry(async () => {
+    return await this.#askAgain(async () => {
       const inputWinningNumber = await this.#input.readLineAsync(
         INPUT_MESSAGE.WINNING_NUMBER,
       );
@@ -59,7 +59,7 @@ class App {
   }
 
   async #askRetry() {
-    return await this.#retry(async () => {
+    return await this.#askAgain(async () => {
       const askRetry = await this.#input.readLineAsync(INPUT_MESSAGE.ASK_RETRY);
       const input = askRetry.toLowerCase();
 
@@ -70,7 +70,7 @@ class App {
     });
   }
 
-  async #retry(task) {
+  async #askAgain(task) {
     while (true) {
       try {
         return await task();
