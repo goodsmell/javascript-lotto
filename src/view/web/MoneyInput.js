@@ -8,7 +8,7 @@ class MoneyInput {
     this.$moneyForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const moneyValue = this.$moneyInput.value;
-      handler(moneyValue);
+      handler(Number(moneyValue));
     });
   }
 
